@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'pry'
   gem 'travis'
+  gem 'bcrypt'
 end
 
 group :development do
