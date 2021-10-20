@@ -28,6 +28,7 @@ RSpec.describe 'create a new event' do
     check :attendee[@user_1.email]
     click_button 'Create Party'
 
+  
     expect(current_path).to eq(dashboard_path)
 
     within "#hostin-parties" do
@@ -36,6 +37,18 @@ RSpec.describe 'create a new event' do
       expect(page).to have_content('2021-10-10')
       expect(page).to have_content('8:00:00')
       expect(page).to have_content(@user_1.email)
+      expect(page).to have_content('Hosting')
     end
+  end
+
+  it 'has a sad path' do
+    fill_in 'event[title]', with: '    '
+    fill_in 'event[runtime]', with: '90'
+    fill_in 'event[date]', with: '2021-10-10'
+    fill_in 'event[time]', with: '8:00:00'
+    check :attendee[@user_1.email]
+    click_button 'Create Party'
+    expect(page).to have_content('Party not created')
+    expect(current_path).to eq(new_event_path)
   end
 end
