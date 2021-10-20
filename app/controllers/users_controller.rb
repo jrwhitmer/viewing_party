@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "User not found. Please try your search again."
     end
-    redirect_to dashboard_path(current_user.id)
+    redirect_to dashboard_path
   end
 
   private
