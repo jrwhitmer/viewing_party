@@ -1,4 +1,5 @@
 require 'rails_helper'
+<<<<<<< HEAD
 
 RSpec.describe 'create a new event' do
   before :each do
@@ -20,3 +21,5 @@ RSpec.describe 'create a new event' do
     expect(page).to have_unchecked_field()
   end
 end
+=======
+>>>>>>> 8261568c668a1e12517a6c11fcdcb0df90db5064
