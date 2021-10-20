@@ -1,5 +1,4 @@
 require 'rails_helper'
-<<<<<<< HEAD
 
 RSpec.describe 'create a new event' do
   before :each do
@@ -15,11 +14,27 @@ RSpec.describe 'create a new event' do
   end
 
   it 'has a form to create a new viewing party' do
-    expect(page).to have_field(:duration)
-    expect(page).to have_field(:date)
-    expect(page).to have_field(:time)
-    expect(page).to have_unchecked_field()
+
+    expect(page).to have_field('event[title]')
+    expect(page).to have_field('event[runtime]')
+    expect(page).to have_field('event[date]')
+    expect(page).to have_field('event[time]')
+    expect(page).to have_unchecked_field(:attendee[@user_1.email])
+
+    fill_in 'event[title]', with: 'Pulp Fiction'
+    fill_in 'event[runtime]', with: '90'
+    fill_in 'event[date]', with: '2021-10-10'
+    fill_in 'event[time]', with: '8:00:00'
+    check :attendee[@user_1.email]
+    click_button 'Create Party'
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content('Pulp Fiction')
+    expect(page).to have_content('90')
+    expect(page).to have_content('2021-10-10')
+    expect(page).to have_content('8:00:00')
+    expect(page).to have_content(@user_1.email)
+    save_and_open_page
   end
 end
-=======
->>>>>>> 8261568c668a1e12517a6c11fcdcb0df90db5064

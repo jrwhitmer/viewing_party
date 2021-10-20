@@ -35,6 +35,7 @@
 <%if event.user_id == current_user.id %>
 <ul>
   <li><%=event.title%></li>
+  <li><%= event.runtime  %> </li>
   <li><%=event.date %></li>
   <li><%=event.time  %> </li>
   <li>Hosting</li>
