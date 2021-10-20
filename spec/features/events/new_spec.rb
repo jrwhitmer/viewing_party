@@ -30,11 +30,12 @@ RSpec.describe 'create a new event' do
 
     expect(current_path).to eq(dashboard_path)
 
-    expect(page).to have_content('Pulp Fiction')
-    expect(page).to have_content('90')
-    expect(page).to have_content('2021-10-10')
-    expect(page).to have_content('8:00:00')
-    expect(page).to have_content(@user_1.email)
-    save_and_open_page
+    within "#hostin-parties" do
+      expect(page).to have_content('Pulp Fiction')
+      expect(page).to have_content('90')
+      expect(page).to have_content('2021-10-10')
+      expect(page).to have_content('8:00:00')
+      expect(page).to have_content(@user_1.email)
+    end
   end
 end
